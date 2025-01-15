@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
 require('dotenv').config();
 const userRoutes = require('./routes/users');
 const carRoutes = require('./routes/cars');
@@ -12,9 +13,9 @@ const app = express();
 app.use(express.json());
 
 app.use(cors({
-    origin: 'http://localhost:3001', // Allow requests from this origin
-    methods: ['GET', 'POST'], // You can adjust the allowed methods as needed
-    allowedHeaders: ['Content-Type'], // You can add more allowed headers here if needed
+    origin: 'http://localhost:3001', 
+    methods: ['GET', 'POST'], 
+    allowedHeaders: ['Content-Type'],
 }));
 
 mongoose.connect(
@@ -37,23 +38,24 @@ app.listen(port, () => {
 })
 
 
-app.get('/*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
-} )
 
 app.get('/', (req, res) => {
     res.send('Welcome to the backend!');
-  });
+});
 
 app.use('/user', userRoutes);
 app.use('/cars', carRoutes);
 
 app.get('/s3Url', async (req, res) => {
     try {
-      const url = await generateURL();
-      res.json({ url }); 
+        const url = await generateURL();
+        res.json({ url }); 
     } catch (err) {
-      console.error('Error generating S3 URL:', err.message);
-      res.status(500).json({ message: 'Error generating S3 URL' });
+        console.error('Error generating S3 URL:', err.message);
+        res.status(500).json({ message: 'Error generating S3 URL' });
     }
-  });
+});
+
+app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+} )
