@@ -6,6 +6,10 @@ const carSchema = new mongoose.Schema({
         required: true,
         minlength: 3,
     },
+    postedBy:{
+        type: String,
+        required: true,
+    },
     price:{
         type: Number,
         required: true,

@@ -2,6 +2,7 @@ import { Container, Box, Typography, TextField, Button, Card, CardMedia, Grid2, 
 import DeleteIcon from '@mui/icons-material/Delete';
 import React, { useState, useRef, useEffect } from 'react';
 import aws_logo from '../assets/aws_logo.png';
+import { useParams } from 'react-router-dom';
 
 const Car_Form = () => {
   const [model, setModel] = useState('');
@@ -12,6 +13,8 @@ const Car_Form = () => {
   const [files, setFiles] = useState([]);
   const [uploaded, setUploaded] = useState(false);
   const [loading, setLoading] = useState(false);
+  const {userId} = useParams();
+
   const fileInputRef = useRef(null);
 
   const priceHandler = (e) => {
@@ -73,6 +76,7 @@ const Car_Form = () => {
 
       const postData = {
         "model": model,
+        "postedBy": userId,
         "price": price,
         "phone_number": phone,
         "max_pictures": maxPics,

@@ -2,7 +2,7 @@ const Cars = require('../models/carsModel');
 
 exports.createListing = async (req, res) => {
     try {
-        const {model, price, phone_number, max_pictures, pictures} = req.body;
+        const {model, postedBy, price, phone_number, max_pictures, pictures} = req.body;
         
         if(!model){
             return res.status(400).json({message: "Please enter model"})
@@ -31,6 +31,7 @@ exports.createListing = async (req, res) => {
         
         const newCar = new Cars({
             model,
+            postedBy,
             price,
             phone_number,
             max_pictures,
