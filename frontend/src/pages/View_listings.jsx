@@ -13,7 +13,7 @@ const View_listings = () => {
 
     const fetchListings = async () => {
         try {
-            const response = await fetch('https://rhodium-car-platform-9ac4bda6dfd7.herokuapp.com/cars/get-cars');
+            const response = await fetch('https://rhodium-car-platform-23889765be51.herokuapp.com/cars/get-cars');
             if (!response.ok) {
                 const errorData = await response.json();
                 throw new Error(errorData.message || 'Something went wrong');

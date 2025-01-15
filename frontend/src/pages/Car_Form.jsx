@@ -47,7 +47,7 @@ const Car_Form = () => {
 
       const uploadedUrls = await Promise.all(
         files.map(async (file) => {
-          const { url } = await fetch("https://rhodium-car-platform-9ac4bda6dfd7.herokuapp.com/s3Url").then(res => res.json());
+          const { url } = await fetch("https://rhodium-car-platform-23889765be51.herokuapp.com/s3Url").then(res => res.json());
           console.log(url);
           await fetch(url, {
             method: 'PUT',
@@ -84,7 +84,7 @@ const Car_Form = () => {
         "pictures": urls
       }
 
-      const response = await fetch('https://rhodium-car-platform-9ac4bda6dfd7.herokuapp.com/cars/post', {
+      const response = await fetch('https://rhodium-car-platform-23889765be51.herokuapp.com/cars/post', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
