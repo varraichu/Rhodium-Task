@@ -20,8 +20,8 @@
     "web-vitals": "^4.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start-client": "react-scripts start",
+    "build": "react-scripts build && (cd ../backend && npm install",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
