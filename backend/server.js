@@ -36,6 +36,15 @@ app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 })
 
+
+app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+} )
+
+app.get('/', (req, res) => {
+    res.send('Welcome to the backend!');
+  });
+
 app.use('/user', userRoutes);
 app.use('/cars', carRoutes);
 
