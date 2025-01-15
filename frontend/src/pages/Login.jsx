@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { Button, Container, TextField, Box, Typography } from '@mui/material';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -65,31 +66,105 @@ const Login = () => {
   }
 
   return (
-    <div>
-      <form action="">
-        <label htmlFor="">
-          Email
-          <input
-            type="text"
-            placeholder='Enter email'
+    <Container sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+
+
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'stretch',
+          justifyContent: 'center',
+          height: '80vh',
+          // width: {
+          //   xs: '90%', // Width for extra-small screens
+          //   sm: '10%', // Width for small screens
+          //   md: '90%', // Width for medium screens
+          //   lg: '60%', // Width for large screens
+          // },
+          textAlign: 'center',
+          // px: '10%',
+          // bgcolor: 'green'
+        }}
+      >
+        <Box sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          width: {
+            xs: '40vh',
+            sm: '60vh',
+          }
+        }}>
+
+          <Typography sx={{ textAlign: 'left', width: '100%' }}>
+            Email
+          </Typography>
+          <TextField
+            id="email"
+            label="Enter your email"
+            type="email"
+            variant="outlined"
+            fullWidth
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            margin="normal"
           />
-        </label>
-        <label htmlFor="">
-          Password
-          <input
-            type="text"
-            placeholder='Enter password'
+        </Box>
+
+        <Box sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          width: {
+            xs: '40vh',
+            sm: '60vh',
+          },
+          py: '4'
+        }}>
+          <Typography sx={{ textAlign: 'left' }}>
+            Password
+          </Typography>
+          <TextField
+            id="password"
+            label="Enter your password"
+            type="password"
+            variant="outlined"
+            fullWidth
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            margin="normal"
           />
-        </label>
-      </form>
-      <button onClick={login}>Login</button>
-      <button onClick={signup}>Signup</button>
-    </div>
-  )
-}
+        </Box>
+
+        <Box sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          width: {
+            xs: '40vh',
+            sm: '60vh',
+          },
+        }}>
+          <Button
+            variant="contained"
+            onClick={login}
+            sx={{ mb: 2 }}
+          >
+            Login
+          </Button>
+
+          <Button
+            sx={{
+              ":hover": { bgcolor: 'lightskyblue' }
+            }}
+            variant="outlined"
+            onClick={signup}
+          >
+            Sign up
+          </Button>
+
+        </Box>
+      </Box>
+    </Container>
+  );
+};
 
 export default Login

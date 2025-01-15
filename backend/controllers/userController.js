@@ -46,7 +46,7 @@ exports.login = async (req,res) =>{
         }
         
         if(password === existingUser.password){
-            res.status(200).json({message: "Login Successful"});
+            res.status(200).json({message: "Login Successful", id: existingUser._id});
         }
         else{
             return res.status(400).json({message: "Wrong password"})
