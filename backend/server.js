@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 require('dotenv').config();
 const userRoutes = require('./routes/users');
 const carRoutes = require('./routes/cars');
@@ -10,6 +11,11 @@ const generateURL = require('./s3.js');
 const app = express();
 app.use(express.json());
 
+app.use(cors({
+    origin: 'http://localhost:3001', // Allow requests from this origin
+    methods: ['GET', 'POST'], // You can adjust the allowed methods as needed
+    allowedHeaders: ['Content-Type'], // You can add more allowed headers here if needed
+}));
 
 mongoose.connect(
     process.env.MONGODB_URI, {
