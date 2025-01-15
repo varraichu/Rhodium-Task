@@ -46,3 +46,14 @@ exports.createListing = async (req, res) => {
         res.status(500).json({ message: error.message })
     }
 }
+
+exports.getListings = async(req,res) =>{
+    try{
+        const listings = await Cars.find();
+        res.status(200).json(listings);
+    }
+    catch(error){
+        console.error("error");
+        res.status(500).json({ message: error.message });
+    }
+}

@@ -29,7 +29,7 @@ const Login = () => {
 
       const result = await response.json();
       console.log("Login succesful", result.id);
-      navigate(`/carform/${result.id}`);
+      navigate(`/view-listings/${result.id}`);
     }
     catch (error) {
       console.error('Error logging in:', error.message);

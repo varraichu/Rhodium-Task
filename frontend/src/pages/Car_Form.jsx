@@ -2,7 +2,7 @@ import { Container, Box, Typography, TextField, Button, Card, CardMedia, Grid2, 
 import DeleteIcon from '@mui/icons-material/Delete';
 import React, { useState, useRef, useEffect } from 'react';
 import aws_logo from '../assets/aws_logo.png';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const Car_Form = () => {
   const [model, setModel] = useState('');
@@ -14,6 +14,7 @@ const Car_Form = () => {
   const [uploaded, setUploaded] = useState(false);
   const [loading, setLoading] = useState(false);
   const {userId} = useParams();
+  const navigate = useNavigate();
 
   const fileInputRef = useRef(null);
 
@@ -109,6 +110,7 @@ const Car_Form = () => {
       if (fileInputRef.current) {
         fileInputRef.current.value = null; // Reset the file input
       }
+      navigate(`/view-listings/${result.id}`);
     }
     catch (error) {
       console.error('Error submitting post:', error.message);
