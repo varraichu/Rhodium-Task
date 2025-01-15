@@ -14,7 +14,7 @@ const Login = () => {
         "password": password,
       };
 
-      const response = await fetch('https://rhodium-car-platform-23889765be51.herokuapp.com/user/login', {
+      const response = await fetch('http://localhost:3000/user/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
